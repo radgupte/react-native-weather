@@ -6,6 +6,7 @@ import {
   FlatList,
   View,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
@@ -72,12 +73,18 @@ const UpcomingWeather = () => {
 
   return (
     <SafeAreaView style={styles.droidSafeArea}>
-      <Text>Upcoming Weather</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.dt_txt}
-      />
+      <ImageBackground
+        source={require('../../assets/rain.jpg')}
+        style={styles.image}
+      >
+        <Text>Upcoming Weather</Text>
+
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt_txt}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -86,8 +93,8 @@ const styles = StyleSheet.create({
   droidSafeArea: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 25 : 0,
-    marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: 'orange',
+    // marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'darkturquoise',
   },
   container: {
     flex: 1,
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderWidth: 5,
-    backgroundColor: 'darkorange',
+    backgroundColor: 'orange',
   },
   temp: {
     color: 'white',
@@ -109,6 +116,9 @@ const styles = StyleSheet.create({
   date: {
     color: 'white',
     fontSize: 15,
+  },
+  image: {
+    flex: 1,
   },
 });
 export default UpcomingWeather;
