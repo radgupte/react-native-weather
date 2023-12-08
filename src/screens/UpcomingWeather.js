@@ -76,9 +76,8 @@ const UpcomingWeather = () => {
 const styles = StyleSheet.create({
   droidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? 25 : 0,
+    // paddingTop: Platform.OS === 'android' ? 25 : 0,
     // marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: 'darkturquoise',
   },
   container: {
     flex: 1,
