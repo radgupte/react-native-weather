@@ -6,26 +6,50 @@ import {
   ImageBackground,
   View,
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import IconText from '../components/IconText';
 
 const City = () => {
+  const {
+    droidSafeArea,
+    cityName,
+    cityText,
+    countryName,
+    populationWrapper,
+    populationText,
+    riseSetWrapper,
+    riseSetText,
+    rowLayout,
+    imageLayout,
+  } = styles;
   return (
-    <SafeAreaView style={styles.droidSafeArea}>
+    <SafeAreaView style={droidSafeArea}>
       <ImageBackground
         source={require('../../assets/city-background.jpg')}
-        style={styles.imageLayout}
+        style={imageLayout}
       >
-        <Text style={[styles.cityName, styles.cityText]}>New York</Text>
-        <Text style={[styles.countryName, styles.cityText]}>USA</Text>
-        <View style={styles.populationWrapper}>
-          <Feather name={'user'} size={50} color={'white'} />
-          <Text style={styles.populationText}>500000</Text>
+        <Text style={[cityName, cityText]}>New York</Text>
+        <Text style={[countryName, cityText]}>USA</Text>
+        <View style={[populationWrapper, rowLayout]}>
+          <IconText
+            iconName={'user'}
+            iconColor={'red'}
+            bodyText={'500000'}
+            bodyTextStyles={populationText}
+          />
         </View>
-        <View style={styles.riseSetWrapper}>
-          <Feather name={'sunrise'} size={50} color={'white'} />
-          <Text style={styles.riseSetText}>6:30:58am</Text>
-          <Feather name={'sunset'} size={50} color={'white'} />
-          <Text style={styles.riseSetText}>17:28:15pm</Text>
+        <View style={[riseSetWrapper, rowLayout]}>
+          <IconText
+            iconName={'sunrise'}
+            iconColor={'white'}
+            bodyText={'6:30:58am'}
+            bodyTextStyles={riseSetText}
+          />
+          <IconText
+            iconName={'sunset'}
+            iconColor={'white'}
+            bodyText={'17:28:15pm'}
+            bodyTextStyles={riseSetText}
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -56,8 +80,6 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   populationWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
@@ -65,18 +87,18 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: 7.5,
     color: 'red',
-    fontWeight: 'bold',
   },
   riseSetWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around',
     marginTop: 30,
   },
   riseSetText: {
     fontSize: 20,
     color: 'white',
-    fontWeight: 'bold',
+  },
+  rowLayout: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 export default City;
